@@ -1,0 +1,31 @@
+.manda_um_zap {
+    display: flex;
+    justify-content: space-around;
+    height: 20vh;
+    margin-top: 10vh;
+}
+
+.numero_da_pessoa {
+    margin: auto;
+    display: block;
+    width: 40vh;
+    text-align: center;
+    height: 50px;
+    font-size: 1.4em;
+    border-radius: 10px;
+    border-color: var(--primary-color);
+}
+
+.sms_btn_box {
+    border: solid 1px var(--primary-color);
+    height: 100px;
+    border-radius: 10px;
+    background-color: var(--white-color);
+}
+
+.mensagem_personalizada {
+    border: solid 1px var(--primary-color);
+    height: 100px;
+    border-radius: 10px;
+    width: 100%;
+}
