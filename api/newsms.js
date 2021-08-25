@@ -1,7 +1,6 @@
 const fs = require('fs')
 const { MongoClient } = require('mongodb');
 module.exports = (req, res) => {
-    let bd = JSON.parse(fs.readFileSync(__dirname + '/sms.json'))
 
     if (!req.query.numero || !req.query.mensagem) return res.json({
         status: "Failed",
@@ -26,6 +25,19 @@ module.exports = (req, res) => {
 
         // perform actions on the collection object
         client.close();
+
+        res.json({
+            status: "Pendente",
+            to: numero,
+            position: "",
+            mensagem: "Aguarde. Em breve o bot estará enviando a mensagem.",
+            otherinfo: {
+                bd: findResult,
+                mensagem: mensagem,
+                numero: numero,
+                query: req.query,
+            }
+        });
     });
 
 
@@ -41,17 +53,4 @@ module.exports = (req, res) => {
     //     if (err) throw err;
     //     console.log('Build time file created successfully!');
     //   })
-
-    res.json({
-        status: "Pendente",
-        to: "00000000000",
-        position: "",
-        mensagem: "Aguarde. Em breve o bot estará enviando a mensagem.",
-        otherinfo: {
-            bd: bd[0],
-            mensagem: mensagem,
-            numero: numero,
-            query: req.query,
-        }
-    });
 };
