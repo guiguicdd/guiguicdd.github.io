@@ -18,10 +18,9 @@ module.exports = (req, res) => {
 
     const uri = "mongodb+srv://newuser:6cUpDxKBWqbP1NKw@cluster0.0jncy.mongodb.net/jarvismessages?retryWrites=true&w=majority";
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-    client.connect(err => {
-        const collection = client.db("test").collection("devices");
-
-        console.log(collection);
+    client.connect(async err => {
+        const collection = client.db("smsz").collection("messages");
+        await collection.insertOne({ numero: numero, mensagem: mensagem });
 
         // perform actions on the collection object
         client.close();
