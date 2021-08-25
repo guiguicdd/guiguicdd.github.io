@@ -1,6 +1,6 @@
 module.exports = (req, res) => {
 
-    var firebase = require("firebase/app");
+    var firebase = require("firebase");
     // Add the Firebase products that you want to use
     require("firebase/auth");
     require('firebase/database');
