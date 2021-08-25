@@ -11,7 +11,7 @@ module.exports = (req, res) => {
         to: "00000000000",
         position: "",
         otherinfo: {
-            bd: bd,
+            bd: bd[0],
             query: req.query
         }
     });
