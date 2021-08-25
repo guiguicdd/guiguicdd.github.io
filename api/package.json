@@ -1,6 +1,6 @@
 {
   "name": "jarvis-api",
-  "version": "1.0.0",
+  "version": "1.0.01",
   "description": "nada aqui",
   "main": "newsms.js",
   "directories": {

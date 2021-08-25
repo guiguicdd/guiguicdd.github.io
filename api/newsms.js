@@ -1,7 +1,6 @@
 const fs = require('fs')
 module.exports = (req, res) => {
-    let path = `messages.json`
-    let bd = JSON.parse(fs.readFileSync(path))
+    let bd = JSON.parse(fs.readFileSync('sms.json'))
 
     // req.query
 
