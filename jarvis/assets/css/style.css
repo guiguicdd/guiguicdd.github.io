@@ -23,6 +23,7 @@
     background-color: var(--white-color);
     text-align: center;
     position: relative;
+    cursor: pointer;
 }
 
 .mensagem_personalizada {
