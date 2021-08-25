@@ -16,6 +16,10 @@ module.exports = (req, res) => {
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
         const collection = client.db("smsz").collection("messages");
+
+        collection.insertOne(
+            { numero: numero, mensagem: mensagem }
+        )
         // perform actions on the collection object
         res.json({
             status: "Pendente",
