@@ -1,0 +1,26 @@
+{
+  "name": "jarvis-api",
+  "version": "1.0.0",
+  "description": "nada aqui",
+  "main": "newsms.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node newsms.js"
+  },
+  "keywords": [],
+  "author": "Guiguicdd",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guiguicdd/serratembot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/guiguicdd/serratembot.git"
+  },
+  "homepage": "https://github.com/guiguicdd/serratembot#readme"
+}
