@@ -1,4 +1,5 @@
 const fs = require('fs')
+const { MongoClient } = require('mongodb');
 module.exports = (req, res) => {
     let bd = JSON.parse(fs.readFileSync(__dirname + '/sms.json'))
 
@@ -9,20 +10,36 @@ module.exports = (req, res) => {
         mensagem: "Algum erro de identação"
     });
 
-
-
+    // 6cUpDxKBWqbP1NKw
     var mensagem = req.query.mensagem
     var numero = req.query.numero
 
-    sms_data = {
-        mensagem: mensagem,
-        numero: numero
-    };
-    bd.push(sms_data);
-    fs.writeFile(__dirname + '/sms.json', JSON.stringify(bd), (err) => {
-        if (err) throw err;
-        console.log('Build time file created successfully!');
-      })
+
+
+    const uri = "mongodb+srv://newuser:6cUpDxKBWqbP1NKw@cluster0.0jncy.mongodb.net/jarvismessages?retryWrites=true&w=majority";
+    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    client.connect(err => {
+        const collection = client.db("test").collection("devices");
+
+        console.log(collection);
+
+        // perform actions on the collection object
+        client.close();
+    });
+
+
+
+
+
+    // sms_data = {
+    //     mensagem: mensagem,
+    //     numero: numero
+    // };
+    // bd.push(sms_data);
+    // fs.writeFile(__dirname + '/sms.json', JSON.stringify(bd), (err) => {
+    //     if (err) throw err;
+    //     console.log('Build time file created successfully!');
+    //   })
 
     res.json({
         status: "Pendente",
