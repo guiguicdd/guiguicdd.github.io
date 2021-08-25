@@ -21,6 +21,8 @@ module.exports = (req, res) => {
     client.connect(async err => {
         const collection = client.db("smsz").collection("messages");
         await collection.insertOne({ numero: numero, mensagem: mensagem });
+        const findResult = await collection.find({}).toArray();
+        console.log('Found documents =>', findResult);
 
         // perform actions on the collection object
         client.close();
