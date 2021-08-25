@@ -8,6 +8,22 @@ module.exports = (req, res) => {
     require("firebase/auth");
     require("firebase/firestore");
 
+    const firebaseConfig = {
+        apiKey: "AIzaSyD0FRqr2Ifc7gNxoo07SRDG7bAasYPxeEU",
+        authDomain: "jarvisnodejs.firebaseapp.com",
+        databaseURL: "https://jarvisnodejs-default-rtdb.firebaseio.com",
+        projectId: "jarvisnodejs",
+        storageBucket: "jarvisnodejs.appspot.com",
+        messagingSenderId: "247934763889",
+        appId: "1:247934763889:web:98dd74547a32e0bff52cd0",
+        measurementId: "G-FTW747PLZ5"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    firebase.database()
+
 
 
 
