@@ -1,24 +1,20 @@
 var buttons_sms = document.getElementsByClassName('sms_btn_box')
 
+var arraysms = []
+
 for (let i = 0; i < buttons_sms.length; i++) {
     const btn = buttons_sms[i];
     btn.addEventListener('click', (ev) => {
-        if (ev.path[0].className == 'btn_menssagem') {
-            var num = 1
-        } else {
-            var num = 0
+        ev.path[0].className == 'btn_menssagem' ? txt = ev.path[1].innerText : txt = ev.path[0].innerText
+        if (JSON.stringify(btn.classList).includes('sms_btn_box_active')) {
+            btn.classList.remove("sms_btn_box_active");
+            return arraysms.forEach((sms, j) => { if (sms == txt) arraysms.splice(j, 1) });
         }
-
-        ev.path[num].style.background = "#71ff71";
-        ev.path[num].style.transform = "scale(1.1, 1.1)";
-
-        var txt = ev.path[num].innerText
-
-        console.info(txt)
+        btn.classList.add("sms_btn_box_active");
+        arraysms.push(txt)
     })
 }
 
-document.getElementsByClassName('btn_send')[0].addEventListener('click', (ev) => {
-    console.log('Enviado');
-    document.location.reload();
+document.getElementsByClassName('btn_send')[0].addEventListener('click', () => {
+    console.log('Enviado:', arraysms);
 })
