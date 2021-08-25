@@ -1,8 +1,8 @@
 .manda_um_zap {
     display: flex;
     justify-content: space-around;
-    height: 15vh;
-    margin-top: 10vh;
+    height: 10vh;
+    margin-top: 5vh;
 }
 
 .numero_da_pessoa {
