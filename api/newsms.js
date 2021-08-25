@@ -1,5 +1,17 @@
-const { MongoClient } = require('mongodb');
 module.exports = (req, res) => {
+
+
+
+    var firebase = require("firebase/app");
+
+    // Add the Firebase products that you want to use
+    require("firebase/auth");
+    require("firebase/firestore");
+
+
+
+
+
 
     if (!req.query.numero || !req.query.mensagem) return res.json({
         status: "Failed",
@@ -12,27 +24,16 @@ module.exports = (req, res) => {
     var mensagem = req.query.mensagem
     var numero = req.query.numero
 
-    const uri = "mongodb+srv://newuser:6cUpDxKBWqbP1NKw@cluster0.0jncy.mongodb.net/Cluster0?retryWrites=true&w=majority";
-    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-    client.connect(err => {
-        const collection = client.db("smsz").collection("messages");
-
-        collection.insertOne(
-            { numero: numero, mensagem: mensagem }
-        )
-        // perform actions on the collection object
-        res.json({
-            status: "Pendente",
-            to: numero,
-            position: "",
-            mensagem: "Aguarde. Em breve o bot estará enviando a mensagem.",
-            otherinfo: {
-                bd: "findResult",
-                mensagem: mensagem,
-                numero: numero,
-                query: req.query,
-            }
-        });
-        // client.close();
+    res.json({
+        status: "Pendente",
+        to: numero,
+        position: "",
+        mensagem: "Aguarde. Em breve o bot estará enviando a mensagem.",
+        otherinfo: {
+            bd: "findResult",
+            mensagem: mensagem,
+            numero: numero,
+            query: req.query,
+        }
     });
 };

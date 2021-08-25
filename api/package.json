@@ -14,9 +14,7 @@
   "author": "Guiguicdd",
   "license": "ISC",
   "dependencies": {},
-  "devDependencies": {
-    "mongodb": "^4.1.1"
-  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/guiguicdd/serratembot.git"
