@@ -13,16 +13,16 @@ module.exports = (req, res) => {
     var numero = req.query.numero
 
     const uri = "mongodb+srv://newuser:6cUpDxKBWqbP1NKw@cluster0.0jncy.mongodb.net/jarvismessages?retryWrites=true&w=majority";
-    // const client = new MongoClient(uri);
+    // const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     // client.connect(err => {
     //     const collection = client.db("smsz").collection("messages");
-    //     var myobj = {
-    //         numero: numero,
-    //         mensagem: mensagem
+    //     var myobj {
+    //         numer
     //     }
     //     collection.insertOne(myobj, function (err, res) {
     //         if (err) throw err;
     //         console.log("1 document inserted");
+    //         db.close();
     //     });
 
     //     // perform actions on the collection object
@@ -40,14 +40,11 @@ module.exports = (req, res) => {
     //             query: req.query,
     //         }
     //     });
+    //     client.close();
     // });
 
 
-
-
-
-
-    MongoClient.connect(uri, function (err, db) {
+    MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
         if (err) throw err;
         var dbo = db.db("smsz");
         var myobj = { numero: numero, mensagem: mensagem };
@@ -75,7 +72,6 @@ module.exports = (req, res) => {
             //   db.close();
         });
     });
-
 
 
 
