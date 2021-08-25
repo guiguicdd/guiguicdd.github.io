@@ -1,5 +1,5 @@
+const fs = require('fs')
 module.exports = (req, res) => {
-    const fs = require('fs')
     let path = `./messages.json`
     let bd = JSON.parse(fs.readFileSync(path))
 
