@@ -24,7 +24,7 @@ module.exports = (req, res) => {
         console.log('Found documents =>', findResult);
 
         // perform actions on the collection object
-        client.close();
+        
 
         res.json({
             status: "Pendente",
@@ -38,6 +38,7 @@ module.exports = (req, res) => {
                 query: req.query,
             }
         });
+        client.close();
     });
 
 
