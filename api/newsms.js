@@ -33,6 +33,6 @@ module.exports = (req, res) => {
                 query: req.query,
             }
         });
-        client.close();
+        // client.close();
     });
 };
