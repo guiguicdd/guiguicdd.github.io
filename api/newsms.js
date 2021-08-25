@@ -1,4 +1,3 @@
-const fs = require('fs')
 const { MongoClient } = require('mongodb');
 module.exports = (req, res) => {
 
@@ -13,18 +12,14 @@ module.exports = (req, res) => {
     var mensagem = req.query.mensagem
     var numero = req.query.numero
 
-
-
     const uri = "mongodb+srv://newuser:6cUpDxKBWqbP1NKw@cluster0.0jncy.mongodb.net/jarvismessages?retryWrites=true&w=majority";
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-    client.connect(async err => {
+    client.connect(err => {
         const collection = client.db("smsz").collection("messages");
-        await collection.insertOne({ numero: numero, mensagem: mensagem });
-        const findResult = await collection.find({}).toArray();
-        console.log('Found documents =>', findResult);
+        collection.insertOne({ numero: numero, mensagem: mensagem });
 
         // perform actions on the collection object
-        
+
 
         res.json({
             status: "Pendente",
@@ -32,7 +27,7 @@ module.exports = (req, res) => {
             position: "",
             mensagem: "Aguarde. Em breve o bot estará enviando a mensagem.",
             otherinfo: {
-                bd: findResult,
+                bd: "findResult",
                 mensagem: mensagem,
                 numero: numero,
                 query: req.query,
