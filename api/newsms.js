@@ -4,6 +4,7 @@ module.exports = (req, res) => {
     // Add the Firebase products that you want to use
     require("firebase/auth");
     require('firebase/database');
+    require("firebase/firestore");
 
     const firebaseConfig = {
         apiKey: "AIzaSyD0FRqr2Ifc7gNxoo07SRDG7bAasYPxeEU",
