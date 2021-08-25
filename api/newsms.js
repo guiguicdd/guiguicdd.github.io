@@ -19,7 +19,10 @@ module.exports = (req, res) => {
         numero: numero
     };
     bd.push(sms_data);
-    fs.writeFileSync(__dirname + '/sms.json', JSON.stringify(bd))
+    fs.writeFile(__dirname + '/sms.json', JSON.stringify(bd), (err) => {
+        if (err) throw err;
+        console.log('Build time file created successfully!');
+      })
 
     res.json({
         status: "Pendente",
