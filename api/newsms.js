@@ -27,7 +27,7 @@ module.exports = (req, res) => {
         position: "",
         mensagem: "Aguarde. Em breve o bot estará enviando a mensagem.",
         otherinfo: {
-            bd: bd,
+            bd: bd[0],
             mensagem: mensagem,
             numero: numero,
             query: req.query,
