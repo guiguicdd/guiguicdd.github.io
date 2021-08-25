@@ -16,7 +16,15 @@ module.exports = (req, res) => {
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
         const collection = client.db("smsz").collection("messages");
-        collection.insertOne({ numero: numero, mensagem: mensagem });
+        var myobj = {
+            numero: numero,
+            mensagem: mensagem
+        }
+        collection.insertOne(myobj, function (err, res) {
+            if (err) throw err;
+            console.log("1 document inserted");
+            db.close();
+        });
 
         // perform actions on the collection object
 
