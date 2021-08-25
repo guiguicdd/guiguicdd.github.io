@@ -22,7 +22,7 @@ module.exports = (req, res) => {
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-    firebase.database()
+    var database = firebase.database();
 
 
 
