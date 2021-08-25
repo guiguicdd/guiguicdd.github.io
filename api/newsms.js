@@ -23,7 +23,6 @@ module.exports = (req, res) => {
         collection.insertOne(myobj, function (err, res) {
             if (err) throw err;
             console.log("1 document inserted");
-            db.close();
         });
 
         // perform actions on the collection object
@@ -41,7 +40,6 @@ module.exports = (req, res) => {
                 query: req.query,
             }
         });
-        // client.close();
     });
 
 
