@@ -1,9 +1,5 @@
 module.exports = (req, res) => {
 
-    console.log();
-    console.log();
-    console.log();
-
     res.json({
         status: "Pendente",
         to: "00000000000",
