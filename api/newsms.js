@@ -2,16 +2,35 @@ const fs = require('fs')
 module.exports = (req, res) => {
     let bd = JSON.parse(fs.readFileSync(__dirname + '/sms.json'))
 
-    // req.query
+    if (!req.query.numero || !req.query.mensagem) return res.json({
+        status: "Failed",
+        to: "00000000000",
+        position: "",
+        mensagem: "Algum erro de identação"
+    });
 
+
+
+    var mensagem = req.query.mensagem
+    var numero = req.query.numero
+
+    // sms_data = {
+    //     mensagem: 'A',
+    //     numero: ''
+    // };
+    // bd.push(sms_data);
+    // fs.writeFileSync(__dirname + '/sms.json', JSON.stringify(bd))
 
     res.json({
         status: "Pendente",
         to: "00000000000",
         position: "",
+        mensagem: "Algum erro de identação",
         otherinfo: {
             bd: bd[0],
-            query: req.query
+            mensagem: mensagem,
+            numero: numero,
+            query: req.query,
         }
     });
 };
