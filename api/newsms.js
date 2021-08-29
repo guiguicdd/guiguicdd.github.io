@@ -4,19 +4,26 @@ import { createClient } from '@supabase/supabase-js'
 
 
 module.exports = async (req, res) => {
-
-    var mensagem = req.query.mensagem
-    var numero = req.query.numero
-
     const supabase = createClient("https://vhduhnycrkeomzsudlyl.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzMDIwMjMyOCwiZXhwIjoxOTQ1Nzc4MzI4fQ.Qh1JWMTOUgpZxUtR5aPhOhD0Om-euVoiTTlvm4bJ870")
-    const { data, error } = await supabase
-        .from('test')
-        .insert([
-            { message: mensagem, numero: numero }
-        ])
 
-    console.log('Massa' + data);
-    console.log('Vix' + JSON.stringify(error));
+    const mensagem = req.query.mensagem
+    const numero = req.query.numero
+
+    const { dataGet, errorGet } = await supabase
+        .from('test')
+        .select()
+
+    console.log(JSON.stringify(dataGet));
+    console.log(JSON.stringify(errorGet));
+
+    // const { data, error } = await supabase
+    //     .from('test')
+    //     .insert([
+    //         { message: mensagem, numero: numero }
+    //     ])
+
+    // console.log('Massa' + JSON.stringify(data));
+    // console.log('Vix' + JSON.stringify(error));
 
 
 
