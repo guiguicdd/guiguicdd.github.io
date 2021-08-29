@@ -29,19 +29,19 @@ const handler = async (req, res) => {
         .from('test')
         .select()
 
+    for (let i = 0; i < data.length; i++) {
+        const pessoa = data[i];
+        await supabase
+            .from('test')
+            .update({ status: 'Sending' })
+            .match({ numero: pessoa.numero })
+    }
+
     res.json({
         status: "Sucesso",
         mensagem: "Mensagens pegas com sucesso",
         numeros: data
     });
-
-    for (let i = 0; i < data.length; i++) {
-        const pessoa = data[i];
-        var { data, error } = await supabase
-            .from('test')
-            .update({ status: 'Sending' })
-            .match({ numero: pessoa.numero })
-    }
 }
 
 module.exports = allowCors(handler)
