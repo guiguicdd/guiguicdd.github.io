@@ -1,8 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
 
-// Create a single supabase client for interacting with your database 
-
-
 module.exports = async (req, res) => {
     if (!req.query.numero || !req.query.mensagem) return res.json({
         status: "Failed",
@@ -24,28 +21,11 @@ module.exports = async (req, res) => {
         mensagem: "O número que você está tendando enviar uma mensagem, já está no banco de dados."
     });
 
-    console.log(JSON.stringify(data));
-    console.log(JSON.stringify(error));
-
     var { data, error } = await supabase
         .from('test')
         .insert([
-            { message: mensagem, numero: numero }
+            { message: mensagem, numero: numero, status: 'NotSent' }
         ])
-
-    console.log('Massa' + JSON.stringify(data));
-    console.log('Vix' + JSON.stringify(error));
-
-
-
-
-
-
-
-
-
-    // 6cUpDxKBWqbP1NKw
-
 
     res.json({
         status: "Pendente",
