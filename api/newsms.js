@@ -62,11 +62,11 @@ const handler = async (req, res) => {
         .from('test')
         .select()
 
-    if (JSON.stringify(data).includes(numero)) return res.json({
-        status: "InLine",
-        to: numero,
-        mensagem: "O número que você está tendando enviar uma mensagem, já está no banco de dados."
-    });
+    // if (JSON.stringify(data).includes(numero)) return res.json({
+    //     status: "InLine",
+    //     to: numero,
+    //     mensagem: "O número que você está tendando enviar uma mensagem, já está no banco de dados."
+    // });
 
     var { data, error } = await supabase
         .from('test')
