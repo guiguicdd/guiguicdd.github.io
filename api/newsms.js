@@ -2,10 +2,10 @@ import { createClient } from '@supabase/supabase-js'
 
 
 module.exports = async (req, res) => {
-    res.setHeader('Access-Control-Allow-Credentials', true)
-    res.setHeader('Access-Control-Allow-Origin', '*')
 
-    if (!req.query.numero || !req.query.mensagem) return res.json({
+
+    if (!req.query.numero || !req.query.mensagem) return res.setHeader('Access-Control-Allow-Credentials', true)
+    res.setHeader('Access-Control-Allow-Origin', '*').json({
         status: "Failed",
         mensagem: "Algum erro de identação"
     });
@@ -31,7 +31,8 @@ module.exports = async (req, res) => {
             { message: mensagem, numero: numero, status: 'NotSent' }
         ])
 
-    res.json({
+    res.setHeader('Access-Control-Allow-Credentials', true)
+    res.setHeader('Access-Control-Allow-Origin', '*').json({
         status: "Pendente",
         to: numero,
         mensagem: "Aguarde. Em breve o bot estará enviando a mensagem.",
