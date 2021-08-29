@@ -17,7 +17,11 @@ for (let i = 0; i < buttons_sms.length; i++) {
     })
 }
 
-document.getElementsByClassName('btn_send')[0].addEventListener('click', () => {
+var btn = document.getElementsByClassName('btn_send')[0]
+
+btn.addEventListener('click', () => {
+    if (JSON.stringify(btn.classList).includes('btn_send_off')) return
+
     var phoneobj = document.getElementsByClassName('numero_da_pessoa')[0];
     var phone = phoneobj.value.replace('(', "").replace(')', "").replace('-', "").replace(' ', "");
     var ddds = ["11", "12", "13", "14", "15", "16", "17", "18", "19", "21", "22", "24", "27", "28", "31", "32", "33", "34", "35", "37", "38", "41", "42", "43", "44", "45", "46", "47", "48", "49", "51", "53", "54", "55", "61", "62", "63", "64", "65", "66", "67", "68", "69", "71", "73", "74", "75", "77", "79", "81", "82", "83", "84", "85", "86", "87", "88", "89", "91", "92", "93", "94", "95", "96", "97", "98", "99"]
@@ -33,20 +37,21 @@ document.getElementsByClassName('btn_send')[0].addEventListener('click', () => {
         if (phone.startsWith(ddd)) isddd = true
     }
 
-
-
     if (isddd) {
         console.log('Enviando para: ' + phone, arraysms);
-        const URL_TO_FETCH = 'https://guiguicdd-github-io.vercel.app/api/newsms?numero=22981140338&mensagem=Primeira%20mensagem%20%F0%9F%98%89';
-        fetch(URL_TO_FETCH, {
-            method: 'post' // opcional
-        })
-            .then(function (response) {
-                console.log(JSON.stringify(response));
-            })
-            .catch(function (err) {
-                console.error(err);
+        const URL_TO_FETCH = 'https://guiguicdd-github-io.vercel.app/api/newsms?numero=' + phone + '&mensagem=' + arraysms;
+        fetch(URL_TO_FETCH).then(function (response) {
+            response.json().then(function (data) {
+                if (!data.status) return console.log('s', data);
+                if (data.status != "Pendente") return alert('Esse número já está na lista de envios')
+
+                btn.classList.add("btn_send_off")
+
+                console.log(data);
             });
+        }).catch(function (err) {
+            console.error('Failed retrieving information', err);
+        });
     } else {
         console.log('Não é um número valido brasileiro');
     }

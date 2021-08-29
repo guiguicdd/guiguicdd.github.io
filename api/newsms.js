@@ -31,6 +31,37 @@ const handler = async (req, res) => {
     const mensagem = req.query.mensagem
     const numero = req.query.numero
 
+    var smss = mensagem.split(',')
+    var validmessages = ["🤖", "Teste", "😉", "Oi"]
+
+    if (smss.length > validmessages.length) return res.json({
+        status: "BLocked",
+        to: numero,
+        mensagem: "Sintax diferente"
+    });
+
+
+    var isdiferent = 0
+    for (let i = 0; i < smss.length; i++) {
+        const sms = smss[i];
+        var isdiferentin = 0
+        for (let k = 0; k < validmessages.length; k++) {
+            const messagev = validmessages[k];
+            if (sms == messagev) {
+                isdiferentin++
+            }
+        }
+        if (isdiferentin == 0) {
+            isdiferent++
+        }
+    }
+
+    if (isdiferent > 0) return res.json({
+        status: "BLocked",
+        to: numero,
+        mensagem: "Sintax diferente."
+    });
+
     const supabase = createClient("https://vhduhnycrkeomzsudlyl.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzMDIwMjMyOCwiZXhwIjoxOTQ1Nzc4MzI4fQ.Qh1JWMTOUgpZxUtR5aPhOhD0Om-euVoiTTlvm4bJ870")
 
     var { data, error } = await supabase
