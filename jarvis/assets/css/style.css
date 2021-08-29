@@ -14,13 +14,15 @@
     font-size: 1.4em;
     border-radius: 10px;
     border-color: var(--primary-color);
+    background-color: var(--bg-color);
+    color: white;
 }
 
 .sms_btn_box {
     border: solid 1px var(--primary-color);
     height: 100px;
     border-radius: 10px;
-    background-color: var(--white-color);
+    background-color: var(--bg-color);
     text-align: center;
     position: relative;
     cursor: pointer;
@@ -40,7 +42,7 @@
     transform: translateY(-50%);
     margin-left: -20%;
     font-size: 1.5em;
-    color: var(--bg-color);
+    color: white;
 }
 
 .btn_send {
@@ -48,7 +50,7 @@
     width: 100%;
     display: block;
     text-align: center;
-    color: var(--white-color);
+    color: white;
     height: 60px;
     position: fixed;
     bottom: 0px;
@@ -64,6 +66,6 @@
 }
 
 .sms_btn_box_active {
-    background: #71ff71;
+    background: var(--primary-color);
     transform: scale(1.1, 1.1);
 }

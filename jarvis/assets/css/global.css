@@ -5,7 +5,7 @@ main {
 
 textarea:disabled {
     color: var(--bg-color);
-    cursor: default;
-    background-color: #d4d4d4;
+    cursor: no-drop;
+    background-color: #1d1d1d;
     border-color: rgba(118, 118, 118, 0.3);
 }

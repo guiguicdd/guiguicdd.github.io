@@ -26,9 +26,9 @@ btn.addEventListener('click', () => {
     var phone = phoneobj.value.replace('(', "").replace(')', "").replace('-', "").replace(' ', "");
     var ddds = ["11", "12", "13", "14", "15", "16", "17", "18", "19", "21", "22", "24", "27", "28", "31", "32", "33", "34", "35", "37", "38", "41", "42", "43", "44", "45", "46", "47", "48", "49", "51", "53", "54", "55", "61", "62", "63", "64", "65", "66", "67", "68", "69", "71", "73", "74", "75", "77", "79", "81", "82", "83", "84", "85", "86", "87", "88", "89", "91", "92", "93", "94", "95", "96", "97", "98", "99"]
 
-    if (phone.length < 9) return console.log('Número invalido'), phoneobj.value = '', phoneobj.focus();
-    if (/([0-9]{5,9})\1/g.test(phone)) return console.log('erro'), phoneobj.value = '', phoneobj.focus();
-    if (arraysms.length == 0) return console.log('Sem mensagem')
+    if (phone.length < 10) return alert('Não tem números o suficiente.'), phoneobj.value = '', phoneobj.focus();
+    if (/([0-9]{5,9})\1/g.test(phone)) return alert('Número invalido'), phoneobj.value = '', phoneobj.focus();
+    if (arraysms.length == 0) return alert('Sem mensagem')
 
     var isddd = false
 
@@ -44,8 +44,9 @@ btn.addEventListener('click', () => {
             response.json().then(function (data) {
                 if (!data.status) return console.log('s', data);
                 if (data.status != "Pendente") return alert(data.mensagem)
-
                 btn.classList.add("btn_send_off")
+
+                window.location.href = "./sucesso.html";
 
                 console.log(data);
             });
@@ -53,7 +54,7 @@ btn.addEventListener('click', () => {
             console.error('Failed retrieving information', err);
         });
     } else {
-        console.log('Não é um número valido brasileiro');
+        alert('Não é um número valido brasileiro');
     }
 
 })

@@ -40,10 +40,6 @@ const handler = async (req, res) => {
         mensagem: "Tem algo diferente ai..."
     });
 
-    if (mensagem.includes(',')) {
-
-    }
-
     var isdiferent = 0
     for (let i = 0; i < smss.length; i++) {
         const sms = smss[i];

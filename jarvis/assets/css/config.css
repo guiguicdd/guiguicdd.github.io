@@ -1,12 +1,12 @@
 :root {
-    --primary-color: #4AD84A;
-    --bg-color: #303030;
-    --white-color: #FFFFFF;
+    --primary-color: #049e04;
+    --bg-color: #000000;
+    --white-color: #525252;
 }
 
 body {
     background: var(--bg-color);
-    color: var(--white-color);
+    color: white;
 }
 
 a {
