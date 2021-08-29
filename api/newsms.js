@@ -9,13 +9,13 @@ module.exports = async (req, res) => {
     const mensagem = req.query.mensagem
     const numero = req.query.numero
 
-    const { dataGet, errorGet } = await supabase
+    const { data, error } = await supabase
         .from('test')
         .select('numero')
 
-    console.log(JSON.stringify(dataGet));
-    console.log(dataGet);
-    console.log(JSON.stringify(errorGet));
+    console.log(JSON.stringify(data));
+    console.log(data);
+    console.log(JSON.stringify(error));
 
     // const { data, error } = await supabase
     //     .from('test')
