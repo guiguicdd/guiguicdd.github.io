@@ -42,7 +42,7 @@ document.getElementsByClassName('btn_send')[0].addEventListener('click', () => {
             method: 'post' // opcional
         })
             .then(function (response) {
-                console.log(response);
+                console.log(JSON.stringify(response));
             })
             .catch(function (err) {
                 console.error(err);
