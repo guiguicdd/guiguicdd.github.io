@@ -59,7 +59,7 @@ const handler = async (req, res) => {
     //         query: req.query,
     //     }
     // })
-    res.end('a')
+    res.end('Guilherme')
 }
 
 module.exports = allowCors(handler)
