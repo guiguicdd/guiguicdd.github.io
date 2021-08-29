@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
     const { data, error } = await supabase
         .from('test')
         .insert([
-            { name: 'The Shire', country_id: 554 }
+            { name: 'Massa', country_id: 554 }
         ])
 
     console.log('Massa' + data);
