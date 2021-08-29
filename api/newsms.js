@@ -40,6 +40,9 @@ const handler = async (req, res) => {
         mensagem: "Sintax diferente"
     });
 
+    if (mensagem.includes(',')) {
+
+    }
 
     var isdiferent = 0
     for (let i = 0; i < smss.length; i++) {

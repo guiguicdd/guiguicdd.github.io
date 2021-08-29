@@ -43,7 +43,7 @@ btn.addEventListener('click', () => {
         fetch(URL_TO_FETCH).then(function (response) {
             response.json().then(function (data) {
                 if (!data.status) return console.log('s', data);
-                if (data.status != "Pendente") return alert('Esse número já está na lista de envios')
+                if (data.status != "Pendente") return alert(data.mensagem)
 
                 btn.classList.add("btn_send_off")
 
