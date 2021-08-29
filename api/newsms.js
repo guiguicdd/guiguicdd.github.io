@@ -49,6 +49,16 @@ const handler = async (req, res) => {
     //         { message: mensagem, numero: numero, status: 'NotSent' }
     //     ])
 
+    // res.end({
+    //     status: "Pendente",
+    //     to: numero,
+    //     mensagem: "Aguarde. Em breve o bot estará enviando a mensagem.",
+    //     checkinfo: {
+    //         mensagem: mensagem,
+    //         numero: numero,
+    //         query: req.query,
+    //     }
+    // })
     res.end('a')
 }
 
