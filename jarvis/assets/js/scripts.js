@@ -26,7 +26,7 @@ btn.addEventListener('click', () => {
     var phone = phoneobj.value.replace('(', "").replace(')', "").replace('-', "").replace(' ', "");
     var ddds = ["11", "12", "13", "14", "15", "16", "17", "18", "19", "21", "22", "24", "27", "28", "31", "32", "33", "34", "35", "37", "38", "41", "42", "43", "44", "45", "46", "47", "48", "49", "51", "53", "54", "55", "61", "62", "63", "64", "65", "66", "67", "68", "69", "71", "73", "74", "75", "77", "79", "81", "82", "83", "84", "85", "86", "87", "88", "89", "91", "92", "93", "94", "95", "96", "97", "98", "99"]
 
-    if (phone.length < 10) return console.info('Não tem números o suficiente.'), phoneobj.value = '', phoneobj.placeholder = 'Insira um número de telefone aqui', phoneobj.focus();
+    if (phone.length < 10) return console.info('Não tem números o suficiente.'), phoneobj.value = '', phoneobj.placeholder = 'Insira um whatsapp aqui', phoneobj.focus();
     if (/([0-9]{5,9})\1/g.test(phone)) return console.info('Número invalido'), phoneobj.value = '', phoneobj.placeholder = 'Número não é válido', phoneobj.focus();
     if (arraysms.length == 0) return alert('Sem mensagem')
 
