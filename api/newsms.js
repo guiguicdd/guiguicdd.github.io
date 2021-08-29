@@ -11,9 +11,10 @@ module.exports = async (req, res) => {
 
     const { dataGet, errorGet } = await supabase
         .from('test')
-        .select()
+        .select('numero')
 
     console.log(JSON.stringify(dataGet));
+    console.log(dataGet);
     console.log(JSON.stringify(errorGet));
 
     // const { data, error } = await supabase
