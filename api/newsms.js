@@ -5,11 +5,14 @@ import { createClient } from '@supabase/supabase-js'
 
 module.exports = async (req, res) => {
 
+    var mensagem = req.query.mensagem
+    var numero = req.query.numero
+
     const supabase = createClient("https://vhduhnycrkeomzsudlyl.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzMDIwMjMyOCwiZXhwIjoxOTQ1Nzc4MzI4fQ.Qh1JWMTOUgpZxUtR5aPhOhD0Om-euVoiTTlvm4bJ870")
     const { data, error } = await supabase
         .from('test')
         .insert([
-            { name: 'Massa', country_id: 554 }
+            { message: mensagem, numero: numero }
         ])
 
     console.log('Massa' + data);
@@ -29,8 +32,7 @@ module.exports = async (req, res) => {
     });
 
     // 6cUpDxKBWqbP1NKw
-    var mensagem = req.query.mensagem
-    var numero = req.query.numero
+
 
     res.json({
         status: "Pendente",
