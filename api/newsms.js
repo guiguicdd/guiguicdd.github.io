@@ -13,7 +13,6 @@ module.exports = async (req, res) => {
     )
     if (req.method === 'OPTIONS') {
         res.status(200).end()
-        return
     }
     if (!req.query.numero || !req.query.mensagem) return res.json({
         status: "Failed",
