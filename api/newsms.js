@@ -23,7 +23,7 @@ const allowCors = fn => async (req, res) => {
 }
 
 const handler = async (req, res) => {
-    if (!req.query.numero || !req.query.mensagem) return res.end({
+    if (!req.query.numero || !req.query.mensagem) return res.json({
         status: "Failed",
         mensagem: "Algum erro de identação"
     });
@@ -37,7 +37,7 @@ const handler = async (req, res) => {
         .from('test')
         .select()
 
-    if (JSON.stringify(data).includes(numero)) return res.end({
+    if (JSON.stringify(data).includes(numero)) return res.json({
         status: "InLine",
         to: numero,
         mensagem: "O número que você está tendando enviar uma mensagem, já está no banco de dados."
@@ -49,7 +49,7 @@ const handler = async (req, res) => {
             { message: mensagem, numero: numero, status: 'NotSent' }
         ])
 
-    res.end({
+    res.json({
         status: "Pendente",
         to: numero,
         mensagem: "Aguarde. Em breve o bot estará enviando a mensagem.",
