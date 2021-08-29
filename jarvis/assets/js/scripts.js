@@ -33,6 +33,22 @@ document.getElementsByClassName('btn_send')[0].addEventListener('click', () => {
         if (phone.startsWith(ddd)) isddd = true
     }
 
-    if (isddd) console.log('Enviando para: ' + phone, arraysms); else console.log('Não é um número valido brasileiro');
+
+
+    if (isddd) {
+        console.log('Enviando para: ' + phone, arraysms);
+        const URL_TO_FETCH = 'https://guiguicdd-github-io.vercel.app/api/newsms?numero=22981140338&mensagem=Primeira%20mensagem%20%F0%9F%98%89';
+        fetch(URL_TO_FETCH, {
+            method: 'get' // opcional
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (err) {
+                console.error(err);
+            });
+    } else {
+        console.log('Não é um número valido brasileiro');
+    }
 
 })
