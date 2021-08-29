@@ -37,7 +37,7 @@ const handler = async (req, res) => {
     if (smss.length > validmessages.length) return res.json({
         status: "BLocked",
         to: numero,
-        mensagem: "Sintax diferente"
+        mensagem: "Tem algo diferente ai..."
     });
 
     if (mensagem.includes(',')) {
@@ -62,7 +62,7 @@ const handler = async (req, res) => {
     if (isdiferent > 0) return res.json({
         status: "BLocked",
         to: numero,
-        mensagem: "Sintax diferente."
+        mensagem: "Seu pilantra kkkk"
     });
 
     const supabase = createClient("https://vhduhnycrkeomzsudlyl.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzMDIwMjMyOCwiZXhwIjoxOTQ1Nzc4MzI4fQ.Qh1JWMTOUgpZxUtR5aPhOhD0Om-euVoiTTlvm4bJ870")
