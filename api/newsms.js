@@ -4,16 +4,16 @@ import { createClient } from '@supabase/supabase-js'
 
 
 module.exports = async (req, res) => {
-    
+
     const supabase = createClient("https://vhduhnycrkeomzsudlyl.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzMDIwMjMyOCwiZXhwIjoxOTQ1Nzc4MzI4fQ.Qh1JWMTOUgpZxUtR5aPhOhD0Om-euVoiTTlvm4bJ870")
     const { data, error } = await supabase
-        .from('cities')
+        .from('test')
         .insert([
             { name: 'The Shire', country_id: 554 }
         ])
 
     console.log('Massa' + data);
-    console.log('Vix' + error);
+    console.log('Vix' + JSON.stringify(error));
 
 
 
