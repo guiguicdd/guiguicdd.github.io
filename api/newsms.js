@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
         .from('test')
         .select()
 
-    if (data.numero == numero) return res.json({
+    if (JSON.stringify(data).includes(numero)) return res.json({
         status: "InLine",
         to: numero,
         position: "",
