@@ -29,12 +29,11 @@ const handler = async (req, res) => {
         .from('test')
         .select()
 
-    for (let i = 0; i < data.length; i++) {
-        const pessoa = data[i];
+    if (req.query.token.length > 2) {
         await supabase
             .from('test')
             .update({ status: 'Sending' })
-            .match({ numero: pessoa.numero })
+            .match({ numero: req.query.token })
     }
 
     res.json({
