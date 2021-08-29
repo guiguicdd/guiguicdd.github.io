@@ -11,10 +11,9 @@ module.exports = async (req, res) => {
 
     const { data, error } = await supabase
         .from('test')
-        .select('numero')
+        .select()
 
     console.log(JSON.stringify(data));
-    console.log(data);
     console.log(JSON.stringify(error));
 
     // const { data, error } = await supabase
