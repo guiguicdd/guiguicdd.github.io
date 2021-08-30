@@ -28,7 +28,6 @@ btn.addEventListener('click', () => {
 
     if (phone.length < 10) return console.info('Não tem números o suficiente.'), phoneobj.value = '', phoneobj.placeholder = 'Insira um whatsapp aqui', phoneobj.focus();
     if (/([0-9]{5,9})\1/g.test(phone)) return console.info('Número invalido'), phoneobj.value = '', phoneobj.placeholder = 'Número não é válido', phoneobj.focus();
-    if (arraysms.length == 0) return alert('Sem mensagem')
 
     var isddd = false
 
@@ -37,24 +36,25 @@ btn.addEventListener('click', () => {
         if (phone.startsWith(ddd)) isddd = true
     }
 
-    if (isddd) {
-        console.log('Enviando para: ' + phone, arraysms);
-        const URL_TO_FETCH = 'https://guiguicdd-github-io.vercel.app/api/newsms?numero=' + phone + '&mensagem=' + arraysms;
-        fetch(URL_TO_FETCH).then(function (response) {
-            response.json().then(function (data) {
-                if (!data.status) return console.log('s', data);
-                if (data.status != "Pendente") return alert(data.mensagem)
-                btn.classList.add("btn_send_off")
+    if (!isddd) return alert('Não é um número valido brasileiro'), phoneobj.focus();
 
-                window.location.href = "./sucesso.html";
+    if (arraysms.length == 0) return alert('Sem mensagem')
 
-                console.log(data);
-            });
-        }).catch(function (err) {
-            console.error('Failed retrieving information', err);
+    btn.classList.add("btn_send_off")
+
+    console.log('Enviando para: ' + phone, arraysms);
+    const URL_TO_FETCH = 'https://guiguicdd-github-io.vercel.app/api/newsms?numero=' + phone + '&mensagem=' + arraysms;
+    fetch(URL_TO_FETCH).then(function (response) {
+        response.json().then(function (data) {
+            if (!data.status) return console.log('s', data);
+            if (data.status != "Pendente") return alert(data.mensagem)
+
+            window.location.href = "./sucesso.html";
+
+            console.log(data);
         });
-    } else {
-        alert('Não é um número valido brasileiro');
-    }
+    }).catch(function (err) {
+        console.error('Failed retrieving information', err);
+    });
 
 })

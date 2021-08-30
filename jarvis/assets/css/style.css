@@ -12,7 +12,10 @@
     text-align: center;
     height: 50px;
     font-size: 1.4em;
-    border-radius: 10px;
+    border-radius: 30px;
+    border-top: unset;
+    border-left: unset;
+    border-right: unset;
     border-color: var(--primary-color);
     background-color: var(--bg-color);
     color: white;
@@ -20,8 +23,9 @@
 
 .sms_btn_box {
     border: solid 1px var(--primary-color);
-    height: 100px;
-    border-radius: 10px;
+    height: calc(4em + 3vw);
+    min-width: 4em;
+    border-radius: 100px;
     background-color: var(--bg-color);
     text-align: center;
     position: relative;
@@ -30,9 +34,12 @@
 
 .mensagem_personalizada {
     border: solid 1px var(--primary-color);
+    background-color: var(--bg-color);
     height: 100px;
     border-radius: 10px;
     width: 100%;
+    color: white;
+    padding: 5px;
 }
 
 .btn_menssagem {
@@ -68,4 +75,9 @@
 .sms_btn_box_active {
     background: var(--primary-color);
     transform: scale(1.1, 1.1);
+}
+input:focus-visible {
+    outline-offset: 0px;
+    outline: unset;
+    border-bottom: 3px solid #09ff09;
 }
