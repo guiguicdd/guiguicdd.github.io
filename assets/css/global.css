@@ -1,0 +1,31 @@
+body {
+    background-color: var(--background-color-dark);
+    color: var(--white);
+    font-family: 'Great Vibes', cursive;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    padding: 10px 50px 10px 50px;
+    border: unset;
+    font-size: 2em;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 6em;
+}
+
+::-webkit-scrollbar {
+    height: 10px;
+    width: 4px;
+    background: gray;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.mt-7 {margin-top: 120px;}
