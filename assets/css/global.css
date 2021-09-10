@@ -24,8 +24,18 @@ h1 {
 }
 
 ::-webkit-scrollbar-thumb:horizontal {
-    background: var(--primary-color);
+    background: var(--background-color-gray);
     border-radius: 10px;
 }
 
-.mt-7 {margin-top: 120px;}
+.mt-7 {
+    margin-top: 120px;
+}
+
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
