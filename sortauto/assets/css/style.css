@@ -1,0 +1,22 @@
+body {
+    background-color: #00c36d;
+}
+
+.header {
+    text-align: center;
+}
+
+.title_header {
+    font-family: 'Ephesis', cursive;
+    font-size: 3.5rem;
+    margin-top: 25%;
+    color: var(--white);
+    font-weight: bold;
+}
+
+.img_header {
+    width: 70px;
+    position: fixed;
+    top: 0px;
+    left: 20px;
+}

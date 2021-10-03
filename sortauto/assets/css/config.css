@@ -7,8 +7,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
-    font: inherit;
     vertical-align: baseline;
 }
 
@@ -42,11 +40,12 @@ table {
 }
 
 :root {
-    --primary-color: #0019B9;
-    --secondary-color: #00B906;
-    --background-color-dark: #000000;
-    --background-color-gray: #2D2D2D;
+    --primary-color: #65ce79;
+    --secondary-color: #658ace;
+    --background-color-dark: #09130a;
+    --background-color-gray: #bac5bc;
     --white: #FFFFFF;
-    --red: #B90000;
-    --orange: #B96900;
+    --red: #ce6565;
+    --orange: #cead65;
+    --green: #5aca44;
 }

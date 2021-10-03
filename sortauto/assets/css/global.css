@@ -1,0 +1,44 @@
+.btn-primary {
+    background-color: var(--secondary-color);
+    border: unset;
+    box-shadow: 2px 4px 13px 0px #007c46a6;
+    padding: 15px 50px 15px 50px;
+    font-weight: 900;
+    margin-top: 100px;
+    border-radius: 10px;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #456db5;
+    border: unset;
+}
+
+.btn-check:focus+.btn-primary, .btn-primary:focus {
+    color: #fff;
+    background-color: var(--secondary-color);
+    border: unset;
+    box-shadow: 2px 4px 13px 0px #007c46a6;
+}
+
+.btn-secondary {
+    background-color: unset;
+    border: unset;
+    padding: 15px 50px 15px 50px;
+    font-weight: 900;
+    margin-top: 100px;
+    border-radius: 10px;
+}
+
+.btn-secondary:hover {
+    color: rgb(239 238 238);
+    background-color: unset;
+    border: unset;
+}
+
+.btn-check:focus+.btn-secondary, .btn-secondary:focus {
+    color: white;
+    background-color: unset;
+    border: unset;
+    box-shadow: unset;
+}
