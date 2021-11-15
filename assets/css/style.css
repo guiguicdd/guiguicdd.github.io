@@ -52,3 +52,53 @@
 .meu_nome:hover {
     cursor: zoom-in;
 }
+
+.form_contact {
+    display: none;
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+}
+
+.email_input {
+    display: none;
+    margin-top: 200px;
+    width: 50%;
+    margin-left: 23%;
+    font-family: 'Inter', sans-serif;
+}
+
+.text_input {
+    display: none;
+    margin-top: 40px;
+    width: 50%;
+    height: 150px;
+    margin-left: 23%;
+    font-family: 'Inter', sans-serif;
+}
+
+#enviarform {
+    bottom: 10px;
+    position: fixed;
+    left: 40%;
+}
+
+.appers {
+    display: block;
+    animation: fade_in_show 0.5s
+}
+
+@keyframes fade_in_show {
+    0% {
+        opacity: 0;
+        transform: scale(0)
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+
+.thumb_img {
+    border-radius: 10px;
+}

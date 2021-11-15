@@ -1,11 +1,34 @@
 var callbtn = document.getElementById('calltoactionbtn')
+var enviarform = document.getElementById('enviarform')
+var topanim = document.getElementsByClassName("top_curve")[0]
+var formc = document.getElementsByClassName("form_contact")[0]
+var formemailinp = document.getElementsByClassName("email_input")[0]
+var formtextinp = document.getElementsByClassName("text_input")[0]
+
+enviarform.addEventListener('click', () => {
+    console.log('massa', topanim.style.height);
+
+    formc.style.display = 'none'
+    formemailinp.classList.remove('appers')
+    setTimeout(() => { formtextinp.classList.remove('appers') }, 200);
+
+    i = parseInt(topanim.style.height.replace('px', ''))
+    var unomassa = setInterval(() => {
+        if (i <= 100) {
+            clearInterval(unomassa)
+            setTimeout(() => { topanim.style.height = '100px' }, 1);
+
+        }
+        topanim.style.height = i / 1.07 + 'px'
+        i = i - 10
+    }, 0.1);
+
+})
 
 var smedias = document.getElementsByClassName('circle_bottom')
 
 callbtn.addEventListener('click', () => {
-    console.log('Massa');
 
-    var topanim = document.getElementsByClassName("top_curve")[0]
 
     // if (!document.fullscreenElement &&    // alternative standard method
     //     !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {  // current working methods
@@ -34,6 +57,9 @@ callbtn.addEventListener('click', () => {
     var massa = setInterval(() => {
         if (i >= window.innerHeight) {
             clearInterval(massa)
+            formc.style.display = 'block'
+            formemailinp.classList.add('appers')
+            setTimeout(() => { formtextinp.classList.add('appers') }, 200);
         }
         topanim.style.height = i * 1.07 + 'px'
         i = i + 10
@@ -47,3 +73,12 @@ for (let i = 0; i < smedias.length; i++) {
     })
 }
 
+
+var projectsURL = document.getElementsByClassName('project')
+
+for (let i = 0; i < projectsURL.length; i++) {
+    const project = projectsURL[i];
+    project.addEventListener('click', () => {
+        window.open(project.getAttribute('url'), '_blank');
+    })
+}
