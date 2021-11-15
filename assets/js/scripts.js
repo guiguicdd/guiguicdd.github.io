@@ -6,8 +6,6 @@ var formemailinp = document.getElementsByClassName("email_input")[0]
 var formtextinp = document.getElementsByClassName("text_input")[0]
 
 enviarform.addEventListener('click', () => {
-    console.log('massa', topanim.style.height);
-
     formc.style.display = 'none'
     formemailinp.classList.remove('appers')
     setTimeout(() => { formtextinp.classList.remove('appers') }, 200);
@@ -17,19 +15,13 @@ enviarform.addEventListener('click', () => {
         if (i <= 100) {
             clearInterval(unomassa)
             setTimeout(() => { topanim.style.height = '100px' }, 1);
-
         }
         topanim.style.height = i / 1.07 + 'px'
         i = i - 10
     }, 0.1);
-
 })
 
-var smedias = document.getElementsByClassName('circle_bottom')
-
 callbtn.addEventListener('click', () => {
-
-
     // if (!document.fullscreenElement &&    // alternative standard method
     //     !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {  // current working methods
     //     if (document.documentElement.requestFullscreen) {
@@ -66,6 +58,7 @@ callbtn.addEventListener('click', () => {
     }, 0.1);
 })
 
+var smedias = document.getElementsByClassName('circle_bottom')
 for (let i = 0; i < smedias.length; i++) {
     const media = smedias[i];
     media.addEventListener('click', () => {
@@ -73,9 +66,7 @@ for (let i = 0; i < smedias.length; i++) {
     })
 }
 
-
 var projectsURL = document.getElementsByClassName('project')
-
 for (let i = 0; i < projectsURL.length; i++) {
     const project = projectsURL[i];
     project.addEventListener('click', () => {
