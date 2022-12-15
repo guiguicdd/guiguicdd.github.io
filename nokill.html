@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teste</title>
+  </head>
+  <body>
+    <script>
+      const youtubeLinks = {
+        videoLong: "www.youtube.com/watch?v=",
+        channel: "www.youtube.com/c/",
+        videoShort: "https://youtu.be/",
+        https: "https://",
+        www: "www.",
+      };
+
+      const full_url =
+        "https://www.youtube.com/watch?v=1ENiVwk8idM&ab_channel=Fireship";
+
+      const searchParams = new URLSearchParams(full_url.split("?")[1]);
+
+      function buildChannelURL(channelFallback) {
+        if (channelFallback.includes(youtubeLinks.https)) {
+          if (channelFallback.includes(youtubeLinks.www)) {
+            return channelFallback.replace(
+              youtubeLinks.https,
+              youtubeLinks.www
+            );
+          }
+          return channelFallback.replace(youtubeLinks.https, "");
+        } else if (!channelFallback.includes(youtubeLinks.www)) {
+          return youtubeLinks.channel + channelFallback;
+        }
+
+        return channelFallback;
+      }
+
+      function buildVideoURL(fallbackURL) {
+        if (fallbackURL.includes(youtubeLinks.videoShort)) {
+          const videoId = fallbackURL.split(youtubeLinks.videoShort)[1];
+          return youtubeLinks.videoLong + videoId;
+        } else if (fallbackURL.includes(youtubeLinks.https)) {
+          if (fallbackURL.includes(youtubeLinks.www)) {
+            return fallbackURL.replace(youtubeLinks.https, youtubeLinks.www);
+          }
+          return fallbackURL.replace(youtubeLinks.https, "");
+        } else if (!fallbackURL.includes(youtubeLinks.www)) {
+          return youtubeLinks.videoLong + fallbackURL;
+        }
+
+        return fallbackURL;
+      }
+
+      function getFallbackURL(searchParams) {
+        const fallbackURL = searchParams.get("u") ?? searchParams.get("v");
+        const channelFallback = searchParams.get("c") ?? searchParams.get("c");
+
+        if (channelFallback) {
+          return buildChannelURL(channelFallback);
+        } else if (fallbackURL) {
+          return buildVideoURL(fallbackURL);
+        }
+
+        return null;
+      }
+
+      const fallbackURL = getFallbackURL(searchParams);
+
+      const redirectUrls = {
+        androidApp: `intent://${fallbackURL}#Intent;package=com.google.android.youtube;scheme=https;end`,
+        iosApp: `vnd.youtube://${fallbackURL}`,
+        browser: `https://${fallbackURL}`,
+      };
+
+      document.body.innerText = JSON.stringify(redirectUrls.androidApp);
+
+      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+      const isAndroid = /Android/i.test(navigator.userAgent);
+
+        if (isIOS) {
+          window.location.href = redirectUrls.iosApp;
+          window.setTimeout(function () {
+            window.location.href = `https://${redirectUrls.fallbackURL}`;
+          }, 25);
+        } else if (isAndroid) {
+          window.location.href = redirectUrls.androidApp;
+          window.setTimeout(function () {
+            window.location.href = `https://${redirectUrls.fallbackURL}`;
+          }, 25);
+        } else {
+          window.location.href = redirectUrls.fallbackURL;
+        }
+
+        // function killPopup() {
+        //   window.removeEventListener("pagehide", killPopup);
+        // }
+
+        // window.addEventListener("pagehide", killPopup);
+    </script>
+  </body>
+</html>
