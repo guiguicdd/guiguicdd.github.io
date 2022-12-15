@@ -5,8 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Teste</title>
+    <style>
+      html {
+        width: 100%;
+        height: 100%;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+      }
+    </style>
   </head>
   <body>
+    <img
+      src="https://emojipedia-us.s3.amazonaws.com/source/microsoft-teams/337/index-pointing-up_261d-fe0f.png"
+      alt="pointing"
+    />
     <script>
       const youtubeLinks = {
         videoLong: "www.youtube.com/watch?v=",
@@ -74,30 +93,30 @@
         browser: `https://${fallbackURL}`,
       };
 
-    //   alert(redirectUrls.androidApp);
+      //   alert(redirectUrls.androidApp);
 
       const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
       const isAndroid = /Android/i.test(navigator.userAgent);
 
-        if (isIOS) {
-          window.location.href = redirectUrls.iosApp;
-          // window.setTimeout(function () {
-          //   window.location.href = `https://${redirectUrls.fallbackURL}`;
-          // }, 50);
-        } else if (isAndroid) {
-          window.location.href = redirectUrls.androidApp;
-          // window.setTimeout(function () {
-          //   window.location.href = `https://${redirectUrls.fallbackURL}`;
-          // }, 50);
-        } else {
-          window.location.href = redirectUrls.fallbackURL;
-        }
+      if (isIOS) {
+        window.location.href = redirectUrls.iosApp;
+        window.setTimeout(function () {
+          window.location.href = `https://${fallbackURL}`;
+        }, 50);
+      } else if (isAndroid) {
+        window.location.href = redirectUrls.androidApp;
+        window.setTimeout(function () {
+          window.location.href = `https://${fallbackURL}`;
+        }, 50);
+      } else {
+        window.location.href = redirectUrls.browser;
+      }
 
-        function killPopup() {
-          window.removeEventListener("pagehide", killPopup);
-        }
+      function killPopup() {
+        window.removeEventListener("pagehide", killPopup);
+      }
 
-        window.addEventListener("pagehide", killPopup);
+      window.addEventListener("pagehide", killPopup);
     </script>
   </body>
 </html>

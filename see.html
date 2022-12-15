@@ -74,30 +74,30 @@
         browser: `https://${fallbackURL}`,
       };
 
-    //   alert(redirectUrls.androidApp);
+      //   alert(redirectUrls.androidApp);
 
       const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
       const isAndroid = /Android/i.test(navigator.userAgent);
 
-        if (isIOS) {
-          window.location.href = redirectUrls.iosApp;
-          window.setTimeout(function () {
-            window.location.href = `https://${redirectUrls.fallbackURL}`;
-          }, 50);
-        } else if (isAndroid) {
-          window.location.href = redirectUrls.androidApp;
-          window.setTimeout(function () {
-            window.location.href = `https://${redirectUrls.fallbackURL}`;
-          }, 50);
-        } else {
-          window.location.href = redirectUrls.fallbackURL;
-        }
+      if (isIOS) {
+        window.location.href = redirectUrls.iosApp;
+        window.setTimeout(function () {
+          window.location.href = `https://${fallbackURL}`;
+        }, 50);
+      } else if (isAndroid) {
+        window.location.href = redirectUrls.androidApp;
+        window.setTimeout(function () {
+          window.location.href = `https://${fallbackURL}`;
+        }, 50);
+      } else {
+        window.location.href =  redirectUrls.browser;
+      }
 
-        function killPopup() {
-          window.removeEventListener("pagehide", killPopup);
-        }
+      function killPopup() {
+        window.removeEventListener("pagehide", killPopup);
+      }
 
-        window.addEventListener("pagehide", killPopup);
+      window.addEventListener("pagehide", killPopup);
     </script>
   </body>
 </html>
