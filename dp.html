@@ -102,12 +102,12 @@
         window.location.href = redirectUrls.iosApp;
         window.setTimeout(function () {
           window.location.href = `https://${fallbackURL}`;
-        }, 50);
+        }, 25);
       } else if (isAndroid) {
         window.location.href = redirectUrls.androidApp;
         window.setTimeout(function () {
           window.location.href = `https://${fallbackURL}`;
-        }, 50);
+        }, 25);
       } else {
         window.location.href = redirectUrls.browser;
       }
