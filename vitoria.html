@@ -210,6 +210,12 @@
           flork.classList.remove("dance");
           isPlaying = false;
 
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          }
+
           return;
         }
 
@@ -219,6 +225,12 @@
 
         confetti.style.display = "block";
         audio.play();
+
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen();
+        } else if (document.documentElement.webkitRequestFullscreen) {
+          document.documentElement.webkitRequestFullscreen();
+        }
 
         flork.classList.remove("jump");
         flork.classList.remove("wave");
@@ -230,6 +242,12 @@
           confetti.style.display = "none";
           flork.classList.remove("dance");
           isPlaying = false;
+
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          }
         });
       });
     </script>
