@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Página de aniversário da Vitória - 19 anos"
+    />
+    <meta name="author" content="Guilherme" />
+    <meta property="og:title" content="Feliz Aniversário, Vitória!" />
+    <meta
+      property="og:description"
+      content="Parabéns pelos 19 anos, Vitória!"
+    />
+    <meta
+      property="og:image"
+      content="https://via.placeholder.com/1200x630.png?text=Feliz+Aniversário+Vitória"
+    />
+    <meta property="og:url" content="https://www.exemplo.com/aniversario" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Feliz Aniversário, Vitória!</title>
+
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      }
+
+      .container {
+        text-align: center;
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        color: #ff6f61;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        color: #555;
+      }
+
+      p {
+        font-size: 1rem;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .confetti {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("./assets/img/cft.gif");
+        background-size: cover;
+        pointer-events: none;
+        z-index: 1;
+        display: none; /* Oculta o confetti inicialmente */
+      }
+
+      .balloons {
+        width: 100%;
+        height: 150px;
+
+        background-image: url("./assets/img/cake.png");
+        background-size: cover;
+        margin-bottom: 20px;
+      }
+
+      .flork {
+        width: 100px;
+        position: fixed;
+        right: 10px;
+        bottom: 0px;
+      }
+
+      @keyframes dance {
+        0%,
+        100% {
+          transform: translateX(0) rotate(0);
+        }
+        25% {
+          transform: translateX(-10px) rotate(-10deg);
+        }
+        50% {
+          transform: translateX(10px) rotate(10deg);
+        }
+        75% {
+          transform: translateX(-10px) rotate(-10deg);
+        }
+      }
+
+      .flork.dance {
+        animation: dance 0.5s infinite;
+      }
+
+      @keyframes jump {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      @keyframes wave {
+        0% {
+          transform: rotate(0);
+        }
+        50% {
+          transform: rotate(15deg);
+        }
+        100% {
+          transform: rotate(0);
+        }
+      }
+
+      .flork:hover {
+        animation: jump 0.6s ease;
+        cursor: pointer;
+      }
+
+      .flork.wave {
+        animation: wave 0.5s ease infinite;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #ff6f61;
+        color: white;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #e55c51;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="confetti"></div>
+    <div class="container">
+      <div class="balloons"></div>
+      <img class="flork" src="./assets/img/flork.png" alt="Vitória" />
+      <h1>Feliz Aniversário, Vitória!</h1>
+      <h2>Hoje você completa 19 anos!</h2>
+      <p>
+        Que seu dia seja cheio de alegria, amor e momentos inesquecíveis,
+        Vitória! Que você continue brilhando e realizando todos os seus sonhos.
+        Aproveite cada segundo deste novo ano da sua vida!
+      </p>
+      <a href="#" class="btn" id="celebrate-btn">Comemorar Agora</a>
+    </div>
+
+    <script>
+      let isPlaying = false;
+
+      const celebrateButton = document.getElementById("celebrate-btn");
+      const confetti = document.querySelector(".confetti");
+      const flork = document.querySelector(".flork");
+
+      const audio = new Audio("./assets/music/happy.mp4");
+
+      // Faz o Flork acenar quando a página carrega
+      window.addEventListener("load", () => {
+        flork.classList.add("wave");
+
+        // Remove o aceno após 3 segundos
+        setTimeout(() => {
+          flork.classList.remove("wave");
+        }, 3000);
+      });
+
+      // Flork pula no hover
+      flork.addEventListener("mouseover", () => {
+        flork.style.animation = "jump 0.6s ease";
+
+        setTimeout(() => {
+          flork.style.animation = "none";
+        }, 600);
+      });
+
+      celebrateButton.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        if (isPlaying) {
+          celebrateButton.innerText = "Comemorar Agora";
+          confetti.style.display = "none";
+          audio.pause();
+          audio.currentTime = 0;
+          flork.classList.remove("dance");
+          isPlaying = false;
+
+          return;
+        }
+
+        isPlaying = true;
+
+        celebrateButton.innerText = "Parar a festa";
+
+        confetti.style.display = "block";
+        audio.play();
+
+        flork.classList.remove("jump");
+        flork.classList.remove("wave");
+
+        flork.classList.add("dance");
+
+        audio.addEventListener("ended", () => {
+          celebrateButton.innerText = "Comemorar Agora";
+          confetti.style.display = "none";
+          flork.classList.remove("dance");
+          isPlaying = false;
+        });
+      });
+    </script>
+  </body>
+</html>
